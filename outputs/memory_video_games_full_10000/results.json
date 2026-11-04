@@ -1,0 +1,47 @@
+{
+  "stage": "full",
+  "category": "Video_Games",
+  "seed": 42,
+  "eval_users": 10000,
+  "k_grid": [],
+  "split": {
+    "train": 547625,
+    "validation": 108748,
+    "test": 158213
+  },
+  "notes": [
+    "Original UserKNN and evaluation functions used unchanged.",
+    "All training users retained; only evaluation users sampled.",
+    "F1 averages users with at least one relevant held-out item.",
+    "Software validation chooses k; Video Games reuses it without tuning.",
+    "Preliminary runs are not final report results."
+  ],
+  "tuning": [],
+  "results": {
+    "Global mean": {
+      "rmse": 1.2527046271279707,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "n_users": 8355
+    },
+    "Popularity": {
+      "rmse": null,
+      "precision": 0.003985637342908438,
+      "recall": 0.026857763886489198,
+      "f1": 0.0066284772536341855,
+      "n_users": 8355
+    },
+    "User kNN": {
+      "rmse": 1.1922803198506555,
+      "precision": 0.0011250748055056854,
+      "recall": 0.00708429511840643,
+      "f1": 0.0018695561683205577,
+      "n_users": 8355
+    }
+  },
+  "k_selection": "Software validation RMSE",
+  "k_source": "C:\\Users\\pjhjh\\Documents\\Codex\\2026-11-03\\3-3-ppt-2-ppt\\outputs\\RecSys_Team4\\outputs\\memory_software_full_10000\\results.json",
+  "best_k": 20,
+  "runtime_seconds": 24.96
+}

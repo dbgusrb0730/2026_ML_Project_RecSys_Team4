@@ -1,0 +1,40 @@
+# Python and virtual environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+
+# Raw datasets stay local; retain the dataset instructions
+**/data/*
+!**/data/README.md
+
+# Large trained models / prediction arrays
+*.pkl
+*.pickle
+*.joblib
+*.npy
+*.npz
+*.pt
+*.pth
+
+# Evaluation user IDs are regenerated locally
+**/outputs/**/evaluation_users.csv
+
+# Local settings and temporary files
+.env
+.env.*
+!.env.example
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+tmp/
+*.log
+
+# Keep aggregate metrics, plots, and result summaries under outputs/ tracked.

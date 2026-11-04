@@ -1,0 +1,62 @@
+{
+  "stage": "full",
+  "category": "Software",
+  "seed": 42,
+  "eval_users": 10000,
+  "k_grid": [
+    20,
+    50,
+    100
+  ],
+  "split": {
+    "train": 859781,
+    "validation": 168807,
+    "test": 248252
+  },
+  "notes": [
+    "Original UserKNN and evaluation functions used unchanged.",
+    "All training users retained; only evaluation users sampled.",
+    "F1 averages users with at least one relevant held-out item.",
+    "Validation chooses k; test scores do not choose k.",
+    "Preliminary runs are not final report results."
+  ],
+  "tuning": [
+    {
+      "k": 20,
+      "validation_rmse": 1.248996376991272
+    },
+    {
+      "k": 50,
+      "validation_rmse": 1.249532699584961
+    },
+    {
+      "k": 100,
+      "validation_rmse": 1.2497607469558716
+    }
+  ],
+  "results": {
+    "Global mean": {
+      "rmse": 1.3794462388152269,
+      "precision": 2.4863252113376432e-05,
+      "recall": 0.0002486325211337643,
+      "f1": 4.520591293341169e-05,
+      "n_users": 8044
+    },
+    "Popularity": {
+      "rmse": null,
+      "precision": 0.009249129786176032,
+      "recall": 0.06636643303102775,
+      "f1": 0.015713670203527076,
+      "n_users": 8044
+    },
+    "User kNN": {
+      "rmse": 1.2827098182496108,
+      "precision": 0.0032943809050223773,
+      "recall": 0.02265782245270062,
+      "f1": 0.005551911269179529,
+      "n_users": 8044
+    }
+  },
+  "best_k": 20,
+  "runtime_seconds": 67.18
+}
