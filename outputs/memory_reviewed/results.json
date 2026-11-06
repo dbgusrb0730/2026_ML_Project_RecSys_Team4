@@ -1,0 +1,567 @@
+{
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "2.5.4",
+    "pandas": "3.0.1",
+    "scipy": "1.18.1"
+  },
+  "data_sha256": {
+    "Software": "6538476c9cb20fc983a829d06be796b1929be4f10171b1d551899caf5b3e0590",
+    "Video_Games": "2fb8fd6fb8b93a1a555e1aa4d46e3327e2bf345e9fb02a3bea184a9bce2ba4fa"
+  },
+  "seed": 42,
+  "tuning_seed": 142,
+  "metric_policy": {
+    "primary": "all_users; no relevant test item => precision/recall/F1=0",
+    "secondary": "relevant_users only, comparable to previous reports",
+    "rmse": "over all observed test ratings of sampled users; null for votes/popularity",
+    "ties": "smaller encoded item index first",
+    "k": 10,
+    "threshold": 4
+  },
+  "limitations": [
+    "Previously inspected test sets reused; not a fresh holdout.",
+    "Original kNN uses joint cross-domain similarity; improved uses Software only.",
+    "Rating and vote variants are separate methods; do not combine their metrics into one row.",
+    "Only bias-residual ablation performed; other simultaneous changes not isolated."
+  ],
+  "tuning": [
+    {
+      "k": 100,
+      "popularity_power": 0.0,
+      "metrics": {
+        "Improved rating": {
+          "rmse": 1.1754464007149106,
+          "n_test_ratings": 2291,
+          "n_users_all": 2000,
+          "n_users_relevant": 1560,
+          "all_users": {
+            "precision": 0.0007500000000000001,
+            "recall": 0.006416666666666666,
+            "f1": 0.0013269230769230769
+          },
+          "relevant_users": {
+            "precision": 0.0009615384615384617,
+            "recall": 0.008226495726495725,
+            "f1": 0.0017011834319526626
+          }
+        },
+        "Improved vote": {
+          "rmse": null,
+          "n_test_ratings": 2291,
+          "n_users_all": 2000,
+          "n_users_relevant": 1560,
+          "all_users": {
+            "precision": 0.011100000000000025,
+            "recall": 0.10282142857142856,
+            "f1": 0.019870761591349848
+          },
+          "relevant_users": {
+            "precision": 0.014230769230769262,
+            "recall": 0.13182234432234433,
+            "f1": 0.025475335373525445
+          }
+        }
+      }
+    },
+    {
+      "k": 100,
+      "popularity_power": 0.5,
+      "metrics": {
+        "Improved rating": {
+          "rmse": 1.1754464007149106,
+          "n_test_ratings": 2291,
+          "n_users_all": 2000,
+          "n_users_relevant": 1560,
+          "all_users": {
+            "precision": 0.0007500000000000001,
+            "recall": 0.006416666666666666,
+            "f1": 0.0013269230769230769
+          },
+          "relevant_users": {
+            "precision": 0.0009615384615384617,
+            "recall": 0.008226495726495725,
+            "f1": 0.0017011834319526626
+          }
+        },
+        "Improved vote": {
+          "rmse": null,
+          "n_test_ratings": 2291,
+          "n_users_all": 2000,
+          "n_users_relevant": 1560,
+          "all_users": {
+            "precision": 0.003299999999999996,
+            "recall": 0.030875,
+            "f1": 0.005927489177489175
+          },
+          "relevant_users": {
+            "precision": 0.004230769230769226,
+            "recall": 0.03958333333333333,
+            "f1": 0.007599345099345096
+          }
+        }
+      }
+    },
+    {
+      "k": 500,
+      "popularity_power": 0.0,
+      "metrics": {
+        "Improved rating": {
+          "rmse": 1.174629140338723,
+          "n_test_ratings": 2291,
+          "n_users_all": 2000,
+          "n_users_relevant": 1560,
+          "all_users": {
+            "precision": 0.0009000000000000002,
+            "recall": 0.008166666666666668,
+            "f1": 0.001607226107226107
+          },
+          "relevant_users": {
+            "precision": 0.0011538461538461542,
+            "recall": 0.010470085470085471,
+            "f1": 0.0020605462913155215
+          }
+        },
+        "Improved vote": {
+          "rmse": null,
+          "n_test_ratings": 2291,
+          "n_users_all": 2000,
+          "n_users_relevant": 1560,
+          "all_users": {
+            "precision": 0.014300000000000068,
+            "recall": 0.13392500000000002,
+            "f1": 0.025661721611721568
+          },
+          "relevant_users": {
+            "precision": 0.01833333333333342,
+            "recall": 0.17169871794871797,
+            "f1": 0.03289964309195073
+          }
+        }
+      }
+    },
+    {
+      "k": 500,
+      "popularity_power": 0.5,
+      "metrics": {
+        "Improved rating": {
+          "rmse": 1.174629140338723,
+          "n_test_ratings": 2291,
+          "n_users_all": 2000,
+          "n_users_relevant": 1560,
+          "all_users": {
+            "precision": 0.0009000000000000002,
+            "recall": 0.008166666666666668,
+            "f1": 0.001607226107226107
+          },
+          "relevant_users": {
+            "precision": 0.0011538461538461542,
+            "recall": 0.010470085470085471,
+            "f1": 0.0020605462913155215
+          }
+        },
+        "Improved vote": {
+          "rmse": null,
+          "n_test_ratings": 2291,
+          "n_users_all": 2000,
+          "n_users_relevant": 1560,
+          "all_users": {
+            "precision": 0.006699999999999985,
+            "recall": 0.06325,
+            "f1": 0.012051948051948081
+          },
+          "relevant_users": {
+            "precision": 0.00858974358974357,
+            "recall": 0.0810897435897436,
+            "f1": 0.015451215451215488
+          }
+        }
+      }
+    },
+    {
+      "k": 2000,
+      "popularity_power": 0.0,
+      "metrics": {
+        "Improved rating": {
+          "rmse": 1.169732929750722,
+          "n_test_ratings": 2291,
+          "n_users_all": 2000,
+          "n_users_relevant": 1560,
+          "all_users": {
+            "precision": 0.0012000000000000003,
+            "recall": 0.011166666666666668,
+            "f1": 0.002152680652680652
+          },
+          "relevant_users": {
+            "precision": 0.001538461538461539,
+            "recall": 0.014316239316239317,
+            "f1": 0.0027598469906162204
+          }
+        },
+        "Improved vote": {
+          "rmse": null,
+          "n_test_ratings": 2291,
+          "n_users_all": 2000,
+          "n_users_relevant": 1560,
+          "all_users": {
+            "precision": 0.01440000000000007,
+            "recall": 0.13424642857142857,
+            "f1": 0.025803878474466663
+          },
+          "relevant_users": {
+            "precision": 0.018461538461538553,
+            "recall": 0.17211080586080585,
+            "f1": 0.033081895480085464
+          }
+        }
+      }
+    },
+    {
+      "k": 2000,
+      "popularity_power": 0.5,
+      "metrics": {
+        "Improved rating": {
+          "rmse": 1.169732929750722,
+          "n_test_ratings": 2291,
+          "n_users_all": 2000,
+          "n_users_relevant": 1560,
+          "all_users": {
+            "precision": 0.0012000000000000003,
+            "recall": 0.011166666666666668,
+            "f1": 0.002152680652680652
+          },
+          "relevant_users": {
+            "precision": 0.001538461538461539,
+            "recall": 0.014316239316239317,
+            "f1": 0.0027598469906162204
+          }
+        },
+        "Improved vote": {
+          "rmse": null,
+          "n_test_ratings": 2291,
+          "n_users_all": 2000,
+          "n_users_relevant": 1560,
+          "all_users": {
+            "precision": 0.012750000000000046,
+            "recall": 0.11975833333333333,
+            "f1": 0.022887828837828823
+          },
+          "relevant_users": {
+            "precision": 0.016346153846153906,
+            "recall": 0.15353632478632478,
+            "f1": 0.029343370304908748
+          }
+        }
+      }
+    }
+  ],
+  "results": {
+    "Software": {
+      "Improved rating": {
+        "rmse": 1.2152344020654642,
+        "n_test_ratings": 16759,
+        "n_users_all": 10000,
+        "n_users_relevant": 8044,
+        "all_users": {
+          "precision": 0.0010799999999999978,
+          "recall": 0.007681309523809524,
+          "f1": 0.001821568480539069
+        },
+        "relevant_users": {
+          "precision": 0.0013426156141223245,
+          "recall": 0.009549116762567783,
+          "f1": 0.002264505818671145
+        }
+      },
+      "Improved vote": {
+        "rmse": null,
+        "n_test_ratings": 16759,
+        "n_users_all": 10000,
+        "n_users_relevant": 8044,
+        "all_users": {
+          "precision": 0.01597999999999958,
+          "recall": 0.10975801587301594,
+          "f1": 0.02689380502796164
+        },
+        "relevant_users": {
+          "precision": 0.019865738438587247,
+          "recall": 0.13644706100573836,
+          "f1": 0.033433372734910045
+        }
+      },
+      "Bias only": {
+        "rmse": 1.2157746343281837,
+        "n_test_ratings": 16759,
+        "n_users_all": 10000,
+        "n_users_relevant": 8044,
+        "all_users": {
+          "precision": 0.0005599999999999996,
+          "recall": 0.003376904761904761,
+          "f1": 0.0009145803053155994
+        },
+        "relevant_users": {
+          "precision": 0.0006961710591745395,
+          "recall": 0.004198041722904974,
+          "f1": 0.001136972035449527
+        }
+      },
+      "Global mean": {
+        "rmse": 1.3794462274397286,
+        "n_test_ratings": 16759,
+        "n_users_all": 10000,
+        "n_users_relevant": 8044,
+        "all_users": {
+          "precision": 9.999999999999999e-05,
+          "recall": 0.0006767857142857142,
+          "f1": 0.000163784907902555
+        },
+        "relevant_users": {
+          "precision": 0.00012431626056688214,
+          "recall": 0.000841354692050863,
+          "f1": 0.00020361127287736822
+        }
+      },
+      "Popularity": {
+        "rmse": null,
+        "n_test_ratings": 16759,
+        "n_users_all": 10000,
+        "n_users_relevant": 8044,
+        "all_users": {
+          "precision": 0.00744,
+          "recall": 0.05338515873015872,
+          "f1": 0.012640076311717326
+        },
+        "relevant_users": {
+          "precision": 0.009249129786176032,
+          "recall": 0.06636643303102775,
+          "f1": 0.015713670203527257
+        }
+      },
+      "Original kNN": {
+        "rmse": 1.282709815770471,
+        "n_test_ratings": 16759,
+        "n_users_all": 10000,
+        "n_users_relevant": 8044,
+        "all_users": {
+          "precision": 0.0030900000000000163,
+          "recall": 0.02101559523809524,
+          "f1": 0.0051811783967666185
+        },
+        "relevant_users": {
+          "precision": 0.003841372451516679,
+          "recall": 0.026125802135871755,
+          "f1": 0.006441047236159397
+        }
+      }
+    },
+    "Video Games": {
+      "Improved rating": {
+        "rmse": 1.1411833890287255,
+        "n_test_ratings": 16485,
+        "n_users_all": 10000,
+        "n_users_relevant": 8355,
+        "all_users": {
+          "precision": 0.0006399999999999993,
+          "recall": 0.003974719349278172,
+          "f1": 0.0010334828870570557
+        },
+        "relevant_users": {
+          "precision": 0.000766008378216636,
+          "recall": 0.004757294254073217,
+          "f1": 0.0012369633597331608
+        }
+      },
+      "Improved vote": {
+        "rmse": null,
+        "n_test_ratings": 16485,
+        "n_users_all": 10000,
+        "n_users_relevant": 8355,
+        "all_users": {
+          "precision": 0.00799999999999998,
+          "recall": 0.05512750605388759,
+          "f1": 0.013355632371381662
+        },
+        "relevant_users": {
+          "precision": 0.009575104727707935,
+          "recall": 0.06598145548041602,
+          "f1": 0.01598519733259325
+        }
+      },
+      "Bias only": {
+        "rmse": 1.1415608581632437,
+        "n_test_ratings": 16485,
+        "n_users_all": 10000,
+        "n_users_relevant": 8355,
+        "all_users": {
+          "precision": 0.0003400000000000002,
+          "recall": 0.0016888860159448395,
+          "f1": 0.0005165917226658914
+        },
+        "relevant_users": {
+          "precision": 0.0004069419509275885,
+          "recall": 0.0020214075594791616,
+          "f1": 0.000618302480749122
+        }
+      },
+      "Global mean": {
+        "rmse": 1.2527046580813728,
+        "n_test_ratings": 16485,
+        "n_users_all": 10000,
+        "n_users_relevant": 8355,
+        "all_users": {
+          "precision": 0.0002500000000000001,
+          "recall": 0.0015266666666666668,
+          "f1": 0.00041410839160839155
+        },
+        "relevant_users": {
+          "precision": 0.00029922202274087383,
+          "recall": 0.001827249152204269,
+          "f1": 0.0004956414022841311
+        }
+      },
+      "Popularity": {
+        "rmse": null,
+        "n_test_ratings": 16485,
+        "n_users_all": 10000,
+        "n_users_relevant": 8355,
+        "all_users": {
+          "precision": 0.0033300000000000187,
+          "recall": 0.02243966172716172,
+          "f1": 0.005538092745411348
+        },
+        "relevant_users": {
+          "precision": 0.0039856373429084605,
+          "recall": 0.02685776388648919,
+          "f1": 0.006628477253634168
+        }
+      },
+      "Original kNN": {
+        "rmse": 1.1922803140838656,
+        "n_test_ratings": 16485,
+        "n_users_all": 10000,
+        "n_users_relevant": 8355,
+        "all_users": {
+          "precision": 0.0011499999999999976,
+          "recall": 0.006892373547505127,
+          "f1": 0.001879962178907413
+        },
+        "relevant_users": {
+          "precision": 0.0013764213046080164,
+          "recall": 0.008249399817480702,
+          "f1": 0.002250104343396066
+        }
+      }
+    },
+    "Cross-domain": {
+      "Improved rating": {
+        "rmse": 1.0489792043478299,
+        "n_test_ratings": 9723,
+        "n_users_all": 805,
+        "n_users_relevant": 801,
+        "all_users": {
+          "precision": 0.002857142857142858,
+          "recall": 0.0032907918335002874,
+          "f1": 0.002719835118304776
+        },
+        "relevant_users": {
+          "precision": 0.0028714107365792768,
+          "recall": 0.0033072252508960444,
+          "f1": 0.0027334173161489947
+        }
+      },
+      "Improved vote": {
+        "rmse": null,
+        "n_test_ratings": 9723,
+        "n_users_all": 805,
+        "n_users_relevant": 801,
+        "all_users": {
+          "precision": 0.021118012422360208,
+          "recall": 0.02591361206186283,
+          "f1": 0.02033061235125002
+        },
+        "relevant_users": {
+          "precision": 0.02122347066167287,
+          "recall": 0.026043018364294106,
+          "f1": 0.02043213850531369
+        }
+      },
+      "Bias only": {
+        "rmse": 1.0499586715948581,
+        "n_test_ratings": 9723,
+        "n_users_all": 805,
+        "n_users_relevant": 801,
+        "all_users": {
+          "precision": 0.001987577639751553,
+          "recall": 0.002445161273584014,
+          "f1": 0.0019665241181484323
+        },
+        "relevant_users": {
+          "precision": 0.0019975031210986267,
+          "recall": 0.0024573718167729477,
+          "f1": 0.001976344463307725
+        }
+      },
+      "Global mean": {
+        "rmse": 1.1181310024842908,
+        "n_test_ratings": 9723,
+        "n_users_all": 805,
+        "n_users_relevant": 801,
+        "all_users": {
+          "precision": 0.0013664596273291925,
+          "recall": 0.0017350882381938285,
+          "f1": 0.0014636590368759669
+        },
+        "relevant_users": {
+          "precision": 0.0013732833957553058,
+          "recall": 0.0017437528486217626,
+          "f1": 0.0014709681956119266
+        }
+      },
+      "Popularity": {
+        "rmse": null,
+        "n_test_ratings": 9723,
+        "n_users_all": 805,
+        "n_users_relevant": 801,
+        "all_users": {
+          "precision": 0.023354037267080737,
+          "recall": 0.028171908904567385,
+          "f1": 0.022426519049873812
+        },
+        "relevant_users": {
+          "precision": 0.023470661672908857,
+          "recall": 0.028312592594477836,
+          "f1": 0.022538511654367564
+        }
+      },
+      "Original kNN": {
+        "rmse": 1.2993274114026903,
+        "n_test_ratings": 9723,
+        "n_users_all": 805,
+        "n_users_relevant": 801,
+        "all_users": {
+          "precision": 0.005590062111801244,
+          "recall": 0.005594696936852912,
+          "f1": 0.004985661336962638
+        },
+        "relevant_users": {
+          "precision": 0.00561797752808989,
+          "recall": 0.0056226354983353235,
+          "f1": 0.005010558522165948
+        }
+      }
+    }
+  },
+  "config": {
+    "k": 2000,
+    "popularity_power": 0.0,
+    "shrink": 5.0
+  },
+  "selection": "Software validation vote F1 over all sampled users; rating RMSE breaks ties. Same settings used for rating variant and bias ablation.",
+  "cross_split": {
+    "shared_users": 4026,
+    "hidden_users": 805,
+    "test_ratings": 9723,
+    "hidden_user_sha256": "3b75b3cfcb6b13bce03cc9ffe44baee6bae56fa8a6c9b6eb28ebefc0d29b07ca"
+  },
+  "runtime_seconds": 114.40752625465393
+}
